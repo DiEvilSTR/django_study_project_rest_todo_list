@@ -1,4 +1,5 @@
 from django.contrib.auth import logout
+from django.views.decorators.csrf import csrf_exempt
 
 from utils.http.responses.JSONResponse import JSONResponse
 from utils.http.decorators.views.view import view
