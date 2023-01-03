@@ -1,4 +1,5 @@
-from django.contrib.auth.models import User, auth
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 
 from utils.http.responses.JSONResponse import JSONResponse
@@ -21,8 +22,8 @@ def signup_view(request, data):
     user.save()
 
     # Log user in
-    user_login = auth.authenticate(username=username, password=password)
-    auth.login(request, user_login)
+    user_login = authenticate(username=username, password=password)
+    login(request, user_login)
 
     user_details = User.objects.values('username').get(username=request.user.username)
 

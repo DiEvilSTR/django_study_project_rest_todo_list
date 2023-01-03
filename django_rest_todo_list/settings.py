@@ -53,6 +53,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# CSRF_USE_SESSIONS = True
+
 ROOT_URLCONF = 'django_rest_todo_list.urls'
 
 TEMPLATES = [

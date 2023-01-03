@@ -39,6 +39,11 @@ def view(*, login_required=True, delete:Form=None, get:Form=None, patch:Form=Non
                 multi_value_dict = request.FILES
                 form = ValidationForm(query_dict, multi_value_dict)
 
+            elif request.method == HttpMethod.DELETE:
+                query_dict = QueryDict(request.body)
+                multi_value_dict = QueryDict()
+                form = ValidationForm(query_dict, multi_value_dict)
+
             else:
                 query_dict, multi_value_dict = MultiPartParser(request.META, request, request.upload_handlers).parse()
                 form = ValidationForm(query_dict)

@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 
 from utils.http.responses.JSONResponse import JSONResponse
 from utils.http.constants import HttpMethod, HttpStatus
@@ -7,6 +8,7 @@ from utils.http.decorators.views.view import view
 
 from .login_form import LoginForm
 
+@csrf_exempt
 @view(login_required=False, post=LoginForm)
 def login_view(request, data):
     if request.method == HttpMethod.POST:
