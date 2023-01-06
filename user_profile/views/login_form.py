@@ -5,6 +5,6 @@ username_constraints = {}
 password_constraints = {}
 
 
-class LoginForm(ExactForm):
+class LoginPostForm(ExactForm):
     username = CharField(**username_constraints)
     password = CharField(**password_constraints)

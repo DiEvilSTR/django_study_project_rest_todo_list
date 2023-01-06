@@ -5,6 +5,6 @@ username_constraints = {}
 password_constraints = {}
 
 
-class SignupForm(ExactForm):
+class SignupPostForm(ExactForm):
     username = CharField(**username_constraints)
     password = CharField(**password_constraints)
