@@ -54,7 +54,8 @@ def view(*, login_required=True, delete:Form=None, get:Form=None, patch:Form=Non
             mixed_kwargs = { **kwargs }
 
             if len(form.fields):
-                mixed_kwargs['data'] = form.cleaned_data
+                changed_data = { key: form.cleaned_data[key] for key in form.data.keys() }
+                mixed_kwargs['data'] = changed_data
 
             # TODO: Test file validation
             # if len(multi_value_dict):
