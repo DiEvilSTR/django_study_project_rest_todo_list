@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # Internal apps
+    'task.apps.TaskConfig',
     'user_profile.apps.UserProfileConfig',
 ]
 
