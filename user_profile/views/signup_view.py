@@ -6,11 +6,12 @@ from utils.http.responses.JSONResponse import JSONResponse
 from utils.http.constants import HttpStatus
 from utils.http.decorators.views.view import view
 
-from .signup_form import SignupForm
+from .signup_form import SignupPostForm
+from .user_manager import UserManager
 
 
 @csrf_exempt
-@view(login_required=False, post=SignupForm)
+@view(login_required=False, post=SignupPostForm)
 def signup_view(request, data):
     username = data['username']
     password = data['password']
@@ -25,6 +26,8 @@ def signup_view(request, data):
     user_login = authenticate(username=username, password=password)
     login(request, user_login)
 
-    user_details = User.objects.values('username').get(username=request.user.username)
+    manager = UserManager.get(username=request.user.username)
 
-    return JSONResponse(user_details)
+    response_data = manager.read()
+
+    return JSONResponse(response_data)
