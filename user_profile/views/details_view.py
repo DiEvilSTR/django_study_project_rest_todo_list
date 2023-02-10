@@ -10,7 +10,8 @@ from .user_manager import UserManager
 
 
 @view(delete=NoDataForm, get=NoDataForm)
-def details_view(request, pk):
+def details_view(request, pk=None):
+    pk = pk or request.user.username
     manager = UserManager.get(username=pk)
     
     if not manager:

@@ -12,7 +12,7 @@ class ListTestViews(TestCase):
         self.task_list_url = reverse('task_list')
         
         for n in range(100):
-            test_task = Task.objects.create(title=f"Test task {n}")
+            test_task = Task.objects.create(title=f"Test task {n}", user=1)
             test_task.save()
 
 
