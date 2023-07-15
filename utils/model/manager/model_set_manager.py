@@ -9,7 +9,7 @@ from .base_model_manager import BaseModelManager
 
 default_count = 25
 default_page = 1
-max_count = 100
+max_item_count = 100
 
 
 class ModelSetManager(BaseModelManager):
@@ -38,7 +38,7 @@ class ModelSetManager(BaseModelManager):
         pass
 
     def read(self, *, count:int=default_count, page:int=default_page):
-        normalized_count = clamp(count, 0, max_count)
+        normalized_count = clamp(count, 0, max_item_count)
         count_from = (page - 1) * normalized_count
         count_to = page * normalized_count 
 
