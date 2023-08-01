@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # Third party apps
     'corsheaders',
+    'drf_yasg',
+    'rest_framework',
     
     # Internal apps
     'task.apps.TaskConfig',
